@@ -1,3 +1,9 @@
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
 @font-face {
   font-family: Pokemon;
   src: url(../assets/PokemonSolid.ttf);
@@ -48,16 +54,21 @@ body {
   height: 200px;
   // margin: 0 auto;
   background-color: lightyellow;
-  background-image: url(../assets/header.png);
+  background-image: url(../assets/ash.png);
   // opacity: 0.9;
   background-size: 100%;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: top center;
   display: flex;
   flex-wrap: wrap;
   box-shadow: 0px 0px 40px 5px yellow;
   margin: 40px 0 50px 0;
   font-size: 30px;
+
+  @include tablet {
+    width: 400px;
+    height: 400px;
+  }
 }
 
 .box {
@@ -68,25 +79,10 @@ body {
   padding: 5px;
   position: relative;
 
-  // &::after {
-  //   position: absolute;
-  //   content: '';
-  //   // background-color: lightgrey;
-  //   // background-image: url(../assets/logo.png);
-  //   background: url(../assets/logo.png) no-repeat center center;
-  //   // background-position: center;
-  //   // background-position: contain;
-  //   // padding: 10px;
-  //   width: 100px;
-  //   height: 100px;
-  //   border: none;
-  //   padding: none;
-  //   margin: 0;
-  //   // object-fit: content;
-  //   top: 0;
-  //   left: 0;
-
-  // }
+  @include tablet {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 .pokemon-image {
