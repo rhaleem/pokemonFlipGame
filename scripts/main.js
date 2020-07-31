@@ -8,6 +8,7 @@ let totalPokemonPairs = 0;
 // let myPokemonStarterGrid = [];
 
 const form = document.querySelector(".pokeForm");
+let dropSelect = document.querySelector(".dropdown");
 let pokemonColor = "yellow";
 
 form.addEventListener("submit", (submitEvent) => {
@@ -18,27 +19,13 @@ form.addEventListener("submit", (submitEvent) => {
 
   console.log("color", pokemonColor);
   let container = document.querySelector(".container");
-  // console.log(container.innerHTML);
-  // let big = document.querySelector(".big");
-  // // let container = document.querySelector(".container");
-  // if (
-  //   container.innerHTML === null ||
-  //   container.innerHTML === undefined ||
-  //   container.innerHTML === ""
-  // ) {
-  //   big.innerHTML = `<div class="container"></div>`;
-  // }
+
   container.innerHTML = "";
   console.log(container);
 
   setTimeout(() => {
     loadPokemons(pokemonColor);
   }, 1000);
-  // loadPokemons(pokemonColor);
-  // console.log("myPokemon", myPokemon);
-  // console.log("myPokemonSorted", myPokemonSorted);
-  // console.log("myPokemonStarterGrid", myPokemonStarterGrid);
-  // console.log("myPokemonCompleteGrid", myPokemonCompleteGrid);
 });
 
 function loadPokemons(color = "yellow") {
@@ -102,7 +89,7 @@ function loadPokemons(color = "yellow") {
             />
           </div>
             `;
-        console.log(pokemon, index);
+        // console.log(pokemon, index);
       });
       myPokemonTeam.forEach((pokemon, index) => {
         let arse = document.getElementById(index);
@@ -173,9 +160,32 @@ axios
 
   .then((results) => {
     let options = document.getElementById("dropdown");
-    results.forEach((color) => {
-      options.innerHTML += `<option value="${color.name}">${color.name}</option>`;
+    results.forEach((color, index) => {
+      if (index === 0) {
+        options.innerHTML += `<option value="${color.name}">${color.name}</option>`;
+      } else {
+        options.innerHTML += `<option value="${color.name}">${color.name}</option>`;
+      }
     });
   });
 
 loadPokemons(pokemonColor);
+
+// let dropSelect = document.querySelector(".dropdown");
+// console.log(dropSelect);
+// dropSelect.addEventListener("change", (event) => console.log(dropSelect));
+
+// dropSelect.addEventListener("change", (event) => {
+//   event.preventDefault();
+//   pokemonColor =
+//     event.target.dropdown[event.target.dropdown.selectedIndex].value;
+//   console.log("color", pokemonColor);
+//   let container = document.querySelector(".container");
+
+//   container.innerHTML = "";
+//   console.log(container);
+
+//   setTimeout(() => {
+//     loadPokemons(pokemonColor);
+//   }, 1000);
+// });

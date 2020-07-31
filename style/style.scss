@@ -11,7 +11,9 @@
 
 html {
   box-sizing: border-box;
-  color: blue;
+  // color: #ffcc07;
+  color: #ffcc07;
+  text-shadow: -1px 1px 0 #004a94;
 }
 
 *,
@@ -23,7 +25,7 @@ html {
 * {
   padding: 0;
   margin: 0;
-  font-size: 16px;
+  font-size: 12px;
   font-family: sans-serif;
 }
 
@@ -40,13 +42,32 @@ body {
   // background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  font-size: 30px;
+  // font-size: 10px;
+}
+
+.pokeForm {
+  // display: flex;
+  // flex-direction: column;
+  // font-size: 12px;
 }
 
 #dropdown {
   // margin-bottom: 50px;
   border: none;
   outline: none;
+  width: 50px;
+  box-shadow: 0px 0px 40px 5px yellow;
+  border-radius: 5px;
+}
+
+.selectButton {
+  background-color: #ffcc07;
+  height: 18px;
+  color: #004a94;
+  border: none;
+  outline: none;
+  width: 50px;
+  border-radius: 5px;
 }
 
 .container {
@@ -62,8 +83,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   box-shadow: 0px 0px 40px 5px yellow;
-  margin: 40px 0 50px 0;
-  font-size: 30px;
+  margin: 40px 0 30px 0;
+  // font-size: 10px;
 
   @include tablet {
     width: 400px;
