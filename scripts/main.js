@@ -7,15 +7,16 @@ let compareArray = [];
 let totalPokemonPairs = 0;
 // let myPokemonStarterGrid = [];
 
-const form = document.querySelector(".pokeForm");
-let dropSelect = document.querySelector(".dropdown");
+const form = document.getElementById("IdName");
+console.log(form);
+``;
+// let dropSelect = document.querySelector(".dropdown");
 let pokemonColor = "yellow";
 
-form.addEventListener("submit", (submitEvent) => {
+form.addEventListener("change", (submitEvent) => {
   submitEvent.preventDefault();
 
-  pokemonColor =
-    event.target.dropdown[event.target.dropdown.selectedIndex].value;
+  pokemonColor = event.srcElement.value;
 
   console.log("color", pokemonColor);
   let container = document.querySelector(".container");
@@ -170,22 +171,3 @@ axios
   });
 
 loadPokemons(pokemonColor);
-
-// let dropSelect = document.querySelector(".dropdown");
-// console.log(dropSelect);
-// dropSelect.addEventListener("change", (event) => console.log(dropSelect));
-
-// dropSelect.addEventListener("change", (event) => {
-//   event.preventDefault();
-//   pokemonColor =
-//     event.target.dropdown[event.target.dropdown.selectedIndex].value;
-//   console.log("color", pokemonColor);
-//   let container = document.querySelector(".container");
-
-//   container.innerHTML = "";
-//   console.log(container);
-
-//   setTimeout(() => {
-//     loadPokemons(pokemonColor);
-//   }, 1000);
-// });
