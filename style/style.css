@@ -69,7 +69,7 @@ body {
   width: 200px;
   height: 200px;
   background-color: lightyellow;
-  background-image: url(../assets/ash.png);
+  background-image: url(../assets/pikachu.png);
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: top center;
@@ -108,6 +108,10 @@ body {
 
 .pokemon-image {
   opacity: 0;
+}
+
+p {
+  text-align: center;
 }
 
 img {
