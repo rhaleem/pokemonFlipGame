@@ -1,29 +1,24 @@
 console.log("Calling Pokemon API...");
 
-// let myPokemonSorted = [];
-const gridSize = 8;
+const gridSize = 8; // Set Grid Size
 let count = 0;
 let compareArray = [];
 let totalPokemonPairs = 0;
-// let myPokemonStarterGrid = [];
+let pokemonColor = "yellow"; // Default pokemon Grid Color
 
 const form = document.getElementById("IdName");
-console.log(form);
-``;
-// let dropSelect = document.querySelector(".dropdown");
-let pokemonColor = "yellow";
 
+/* ==========================================================================
+   Change pokemon color in grid when dropdown change
+   ========================================================================== */
 form.addEventListener("change", (submitEvent) => {
   submitEvent.preventDefault();
-
   pokemonColor = event.srcElement.value;
-
-  console.log("color", pokemonColor);
+  let big = document.querySelector(".big");
+  big.innerHTML = "";
+  big.innerHTML = `<div class="container"></div>`;
   let container = document.querySelector(".container");
-
   container.innerHTML = "";
-  console.log(container);
-
   setTimeout(() => {
     loadPokemons(pokemonColor);
   }, 1000);
@@ -32,13 +27,16 @@ form.addEventListener("change", (submitEvent) => {
 function loadPokemons(color = "yellow") {
   axios
     .get(`https://pokeapi.co/api/v2/pokemon-color/${color}`)
-    .then((response) => response.data.pokemon_species)
+    .then((response) => {
+      let pokemonSpecies = response.data.pokemon_species;
+      return pokemonSpecies;
+    }) // Return all pokemon of specified color
     .then((species) => {
-      let myPokemon = [];
+      let myPokemon = []; // Create Pokemon Object
 
       species.forEach((item) => {
         let pokemonArr = item.url.split("/");
-        let pokemonID = pokemonArr[pokemonArr.length - 2];
+        let pokemonID = pokemonArr[pokemonArr.length - 2]; //Select pokemon id from URL
 
         myPokemon.push({
           name: item.name,
@@ -47,8 +45,11 @@ function loadPokemons(color = "yellow") {
           id: pokemonID,
         });
       });
+
       return myPokemon.sort((a, b) => b.random - a.random);
     })
+
+    // Pick out the first pokemons based on grid size
     .then((pokemonSorted) => {
       let myPokemonStarterGrid = [];
 
@@ -59,23 +60,26 @@ function loadPokemons(color = "yellow") {
       });
       return myPokemonStarterGrid;
     })
+
+    // Double up the pokemon so there are 2 of a kind in each grid,
+    // and randomize the random property again
     .then((starterGrid) => {
       let myPokemonCompleteGrid = [];
       let starterGrid2 = JSON.parse(JSON.stringify(starterGrid));
       myPokemonCompleteGrid = [].concat(starterGrid, starterGrid2);
 
-      // console.log(myPokemonCompleteGrid);
       myPokemonCompleteGrid.forEach(
         (pokemon) => (pokemon.random = Math.random() * 100)
       );
       return myPokemonCompleteGrid;
     })
+
     .then((myPokemonTeam) => {
-      // let big = document.querySelector(".big");
+      let big = document.querySelector(".big");
+      if (!big.firstChild) {
+        big.innerHTML = `<div class="container"></div>`;
+      }
       let container = document.querySelector(".container");
-      // if (container.innerHTML == null) {
-      //   big.innerHTML = `<div class="container"></div>`;
-      // }
       console.log(container);
       console.log(myPokemonTeam);
       myPokemonTeam.sort((a, b) => b.random - a.random);
@@ -124,36 +128,37 @@ function loadPokemons(color = "yellow") {
               compareArray = [];
               totalPokemonPairs++;
               if (totalPokemonPairs === 8) {
-                let deleteContainer = document.querySelector(".container");
-                deleteContainer.innerHTML = "";
-                // let deleteBig = document.querySelector(".big");
-                // deleteBig.innerHTML = "";
+                // let deleteContainer = document.querySelector(".container");
+                // deleteContainer.innerHTML = "";
+                let deleteBig = document.querySelector(".big");
+                deleteBig.innerHTML = "";
+                deleteBig.innerHTML = `
+                <div class="endImage animate__animated animate__bounce">
+                <img src="../assets/ash.png" alt="" />
+              </div>`;
                 totalPokemonPairs = 0;
               }
             } else {
               compareArray = [];
               setTimeout(() => {
                 a.style.opacity = 0;
-                console.log("holla");
               }, 500);
               setTimeout(() => {
                 b.style.opacity = 0;
-                console.log("holla");
               }, 500);
             }
-
-            //compare both items
-            //if match then set both to true
-            //else set both to false
-            //clear both items
           }
         });
       });
     });
 }
 
+/* ==========================================================================
+   Retrieve pokemon colours for dropdown
+   ========================================================================== */
 axios
   .get(`https://pokeapi.co/api/v2/pokemon-color/`)
+
   .then((response) => {
     console.log("response", response.data.results);
     return response.data.results;
@@ -161,13 +166,13 @@ axios
 
   .then((results) => {
     let options = document.getElementById("dropdown");
+    options.innerHTML += `<option value=""></option>`;
     results.forEach((color, index) => {
-      if (index === 0) {
-        options.innerHTML += `<option value="${color.name}">${color.name}</option>`;
-      } else {
-        options.innerHTML += `<option value="${color.name}">${color.name}</option>`;
-      }
+      options.innerHTML += `<option value="${color.name}">${color.name}</option>`;
     });
   });
 
+/* ==========================================================================
+   Load initial pokemon grid
+   ========================================================================== */
 loadPokemons(pokemonColor);

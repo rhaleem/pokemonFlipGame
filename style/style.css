@@ -61,7 +61,7 @@ body {
   color: #004a94;
   border: none;
   outline: none;
-  width: 50px;
+  width: 55px;
   border-radius: 5px;
 }
 
@@ -118,5 +118,18 @@ img {
 
 .title {
   width: 250px;
+}
+
+.endImage {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .endImage {
+    width: 400px;
+    height: 400px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
