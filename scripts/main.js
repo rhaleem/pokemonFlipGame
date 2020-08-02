@@ -133,8 +133,8 @@ function loadPokemons(color = "yellow") {
                 //animate__animated animate__zoomIn
                 deleteBig.innerHTML = `
                 <div class="endImage animate__animated animate__zoomIn">
-                <img src="../assets/ashnow.png" alt="" />
-              </div>`;
+                  <img src="./assets/ashnow.png" alt="" />
+                </div>`;
                 totalPokemonPairs = 0;
               }
             } else {
