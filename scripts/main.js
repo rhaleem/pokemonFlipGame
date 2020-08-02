@@ -112,13 +112,11 @@ function loadPokemons(color = "yellow") {
           if (compareArray.length === 2) {
             let a = document.getElementById(compareArray[0]);
             let aId = a.src
-              .split("/")
-              [a.src.split("/").length - 1].split(".")[0];
+              .split("/")[a.src.split("/").length - 1].split(".")[0];
             console.log(aId);
             let b = document.getElementById(compareArray[1]);
             let bId = b.src
-              .split("/")
-              [b.src.split("/").length - 1].split(".")[0];
+              .split("/")[b.src.split("/").length - 1].split(".")[0];
             console.log(bId);
 
             if (aId === bId) {
@@ -135,7 +133,7 @@ function loadPokemons(color = "yellow") {
                 //animate__animated animate__zoomIn
                 deleteBig.innerHTML = `
                 <div class="endImage ">
-                <img src="../assets/ash.png" alt="" />
+                <img src="../assets/ash2.png" alt="" />
               </div>`;
                 totalPokemonPairs = 0;
               }

@@ -11,7 +11,6 @@
 
 html {
   box-sizing: border-box;
-  // color: #ffcc07;
   color: #ffcc07;
   text-shadow: -1px 1px 0 #004a94;
 }
@@ -32,27 +31,18 @@ html {
 body {
   width: 100vw;
   height: 100vh;
-  // height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: url("../assets/background.jpg");
   background-repeat: no-repeat;
-  // background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  // font-size: 10px;
 }
 
-.pokeForm {
-  // display: flex;
-  // flex-direction: column;
-  // font-size: 12px;
-}
 
 #dropdown {
-  // margin-bottom: 50px;
   border: none;
   outline: none;
   width: 55px;
@@ -73,10 +63,8 @@ body {
 .container {
   width: 200px;
   height: 200px;
-  // margin: 0 auto;
   background-color: lightyellow;
   background-image: url(../assets/pikachu.png);
-  // opacity: 0.9;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: top center;
@@ -84,7 +72,6 @@ body {
   flex-wrap: wrap;
   box-shadow: 0px 0px 40px 5px yellow;
   margin: 40px 0 30px 0;
-  // font-size: 10px;
 
   @include tablet {
     width: 400px;
@@ -108,12 +95,6 @@ body {
 
 .pokemon-image {
   opacity: 0;
-
-  // &:hover,
-  // &:active,
-  // a:visited {
-  //   opacity: 1;
-  // }
 }
 
 p {
@@ -135,17 +116,6 @@ img {
   height: 200px;
   padding: 20px;
   position: relative;
-
-  // &::after {
-  //   position: absolute;
-  //   content: url(../assets/awesome.png);
-  //   transform: scale(.3);
-  //   bottom: 100;
-  //   left: -250;
-
-
-
-  // }
 
   @include tablet {
     width: 400px;
