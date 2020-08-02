@@ -132,8 +132,9 @@ function loadPokemons(color = "yellow") {
                 // deleteContainer.innerHTML = "";
                 let deleteBig = document.querySelector(".big");
                 deleteBig.innerHTML = "";
+                //animate__animated animate__zoomIn
                 deleteBig.innerHTML = `
-                <div class="endImage animate__animated animate__zoomIn">
+                <div class="endImage ">
                 <img src="../assets/ash.png" alt="" />
               </div>`;
                 totalPokemonPairs = 0;
