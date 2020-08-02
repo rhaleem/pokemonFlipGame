@@ -137,4 +137,10 @@ img {
     height: 400px;
   }
 }
+
+.hidden-image {
+  width: 1px;
+  height: 1px;
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */
