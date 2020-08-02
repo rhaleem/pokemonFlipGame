@@ -132,7 +132,7 @@ function loadPokemons(color = "yellow") {
                 deleteBig.innerHTML = "";
                 //animate__animated animate__zoomIn
                 deleteBig.innerHTML = `
-                <div class="endImage ">
+                <div class="endImage animate__animated animate__zoomIn">
                 <img src="../assets/ashnow.png" alt="" />
               </div>`;
                 totalPokemonPairs = 0;
